@@ -6,6 +6,10 @@
 	@apply px-8 py-1 border border-secondary font-semibold rounded-full;
 }
 
+.nav-btn {
+	@apply flex items-center gap-2 bg-gray-50 px-2 py-1 rounded-full hover:bg-gray-200;
+}
+
 .social-action-box {
 	@apply flex items-center justify-center gap-1 p-2 hover:bg-gray-200;
 }

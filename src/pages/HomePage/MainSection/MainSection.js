@@ -1,5 +1,5 @@
 import Popular from './Populars/Popular'
-import Sidebar from './Sidebar'
+import Sidebar from './Populars/Sidebar/Sidebar'
 import Trending from './Trendings/Trending'
 
 const MainSection = () => {

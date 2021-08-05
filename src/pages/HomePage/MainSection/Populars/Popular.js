@@ -1,5 +1,5 @@
-import FilterPosts from './FilterPosts'
-import SocialPost from './Socials/SocialPost'
+import FilterCard from './FilterCard'
+import SocialCard from './Socials/SocialCard'
 
 const Popular = () => {
 	return (
@@ -7,8 +7,9 @@ const Popular = () => {
 			<h2 className='font-semibold text-primary'>Popular posts</h2>
 
 			<div>
-				<FilterPosts />
-				<SocialPost />
+				<FilterCard />
+				<SocialCard />
+				<SocialCard />
 			</div>
 		</section>
 	)

@@ -8,9 +8,12 @@ const TrendingPost = () => {
 			{trending.map((post) => {
 				return (
 					<a href='#' className='inline-block' title={post.story}>
-						<div className='bg-gray-800 h-44 text-white px-4 pt-20 rounded-lg'>
+						<div className='bg-gray-800 h-44 text-white px-4 flex flex-col items-start justify-end pb-4 rounded-lg'>
 							<h3 className='font-semibold'>{post.title}</h3>
-							<p>{`${post.story.substring(0, 45)}...`}</p>
+							<p className='text-sm'>{`${post.story.substring(
+								0,
+								50
+							)}...`}</p>
 						</div>
 					</a>
 				)
