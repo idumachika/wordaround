@@ -5,9 +5,9 @@ import PostDetails from './pages/PostDetails/PostDetails'
 function App() {
 	return (
 		<div className='App font-inter text-base'>
-			{/* <HomePage /> */}
+			<HomePage />
 			{/* <PostDetails /> */}
-			<CommunityProfile />
+			{/* <CommunityProfile /> */}
 		</div>
 	)
 }

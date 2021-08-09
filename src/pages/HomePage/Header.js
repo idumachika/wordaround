@@ -1,56 +1,63 @@
 import { FaCaretDown, FaSearch } from 'react-icons/fa'
-import React from 'react';
-import Modal from 'react-modal';
+import React from 'react'
+import Modal from 'react-modal'
+import Login from '../Popup/Login'
+import Signup from '../Popup/Signup'
 // import Modal from '../Popup/Modal'
 // import NavBtns from './NavBtns'
 // import User from './User'
 
 const customStyles = {
 	content: {
-
 		top: '50%',
 		left: '50%',
-		right: 'auto',
+		padding: '0px',
+		// right: 'auto',
 		bottom: 'auto',
 		transform: 'translate(-50%, -50%)',
 	},
-};
+}
 
 const Header = () => {
-	let subtitle;
+	let subtitle
 
-
-	const [modalIsOpen, setIsOpen] = React.useState(false);
+	const [modalIsOpen, setIsOpen] = React.useState(false)
 
 	function openModal() {
-		setIsOpen(true);
+		setIsOpen(true)
 	}
 
 	function afterOpenModal() {
 		// references are now sync'd and can be accessed.
-		// subtitle.style.color = '#f00';
+		// subtitle.style.color = '#f00'
 	}
 
 	function closeModal() {
-		setIsOpen(false);
+		setIsOpen(false)
 	}
 
 	function renderAuthModal() {
-		return (<div>
-			{/* <button onClick={openModal}>Open Modal</button> */}
-			<Modal
-				isOpen={modalIsOpen}
-				onAfterOpen={afterOpenModal}
-				onRequestClose={closeModal}
-				style={customStyles}
-				contentLabel="Example Modal"
-			>
-				<h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2>
-				<button onClick={closeModal}>close</button>
-				<div>this the modal i want to seeee and implement</div>
+		return (
+			<div>
+				{/* <button onClick={openModal}>Open Modal</button> */}
+				<Modal
+					isOpen={modalIsOpen}
+					onAfterOpen={afterOpenModal}
+					onRequestClose={closeModal}
+					style={customStyles}
+					contentLabel='Example Modal'>
+					<div
+						ref={(_subtitle) => (subtitle = _subtitle)}
+						className='flex gap-6 relative'>
+						<div className='w-24 bg-gradient-to-b from-secondary  to-blue-700'></div>
 
-			</Modal>
-		</div>)
+						<Login closeModal={closeModal} />
+						{/* <Signup /> */}
+					</div>
+					{/* <div>this the modal i want to seeee and implement</div> */}
+				</Modal>
+			</div>
+		)
 	}
 
 	return (
@@ -77,7 +84,10 @@ const Header = () => {
 				{/* before user is logged in or after logging out */}
 				<div className='flex gap-4 text-sm'>
 					<div>
-						<button onClick={openModal} type='button' className='btn text-secondary'>
+						<button
+							onClick={openModal}
+							type='button'
+							className='btn text-secondary'>
 							Log in
 						</button>
 					</div>
