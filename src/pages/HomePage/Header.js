@@ -36,6 +36,10 @@ const Header = () => {
 		setIsOpen(false)
 	}
 
+	const handleSubmit = (e) => {
+		e.preventDefault()
+	}
+
 	function renderAuthModal() {
 		return (
 			<div>
@@ -61,12 +65,14 @@ const Header = () => {
 	}
 
 	return (
-		<header className='px-5 py-3 flex items-center justify-between shadow-md gap-8 sticky top-0 bg-white'>
+		<header className='px-8 py-2 flex items-center justify-between shadow-md gap-8 sticky top-0 bg-white'>
 			<div className='flex flex-1 items-center'>
 				<h1 className='font-semibold text-xl uppercase'>WordAround</h1>
 				{renderAuthModal(modalIsOpen)}
 
-				<form className='flex w-full pl-8 relative'>
+				<form
+					className='flex w-full pl-8 relative'
+					onSubmit={handleSubmit}>
 					<label
 						htmlFor='search'
 						className='absolute align-middle top-3'>
@@ -76,7 +82,7 @@ const Header = () => {
 						type='text'
 						id='search'
 						placeholder='Search WordAround'
-						className='bg-gray-100 rounded-full py-3 px-8 text-xs flex-1'
+						className='bg-gray-100 rounded-full py-2 px-10 text-sm font-semibold flex-1'
 					/>
 				</form>
 			</div>
