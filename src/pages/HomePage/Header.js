@@ -57,7 +57,7 @@ const Header = () => {
 		<header className='px-5 py-3 flex items-center justify-between shadow-md gap-8 sticky top-0 bg-white'>
 			<div className='flex flex-1 items-center'>
 				<h1 className='font-semibold text-xl uppercase'>WordAround</h1>
-				{renderAuthModal(modalIsOpen)}
+				{renderAuthModal()}
 
 				<form className='flex w-full pl-8 relative'>
 					<label
