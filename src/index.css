@@ -13,3 +13,11 @@
 .social-action-box {
 	@apply flex items-center justify-center gap-1 p-2 hover:bg-gray-200;
 }
+
+.circle {
+	@apply w-1 h-1 rounded-full bg-gray-300 mx-1;
+}
+
+.social-link {
+	@apply flex items-center gap-4 uppercase tracking-wider text-xs border border-secondary py-3 px-3 font-bold hover:bg-secondary hover:text-white;
+}

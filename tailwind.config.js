@@ -15,7 +15,9 @@ module.exports = {
 		},
 	},
 	variants: {
-		extend: {},
+		extend: {
+			flex: ['hover', 'active'],
+		},
 	},
 	plugins: [],
 }

@@ -1,9 +1,17 @@
+import CommunityProfile from './pages/CommunnityProfile/CommunityProfile'
 import HomePage from './pages/HomePage/HomePage'
+import LiveVideo from './pages/LiveVideo/LiveVideo'
+import PostDetails from './pages/PostDetails/PostDetails'
+import UserProfile from './pages/UserProfile/UserProfile'
 
 function App() {
 	return (
 		<div className='App font-inter text-base'>
-			<HomePage />
+			{/* <HomePage /> */}
+			{/* <PostDetails /> */}
+			{/* <CommunityProfile /> */}
+			{/* <LiveVideo /> */}
+			<UserProfile />
 		</div>
 	)
 }
