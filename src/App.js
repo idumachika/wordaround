@@ -6,7 +6,7 @@ import UserProfile from './pages/UserProfile/UserProfile'
 
 function App() {
 	return (
-		<div className='App font-inter text-base'>
+		<div className='App font-montserrat text-base'>
 			{/* <HomePage /> */}
 			{/* <PostDetails /> */}
 			{/* <CommunityProfile /> */}

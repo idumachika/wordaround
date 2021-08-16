@@ -4,7 +4,7 @@ module.exports = {
 	darkMode: false, // or 'media' or 'class'
 	theme: {
 		fontFamily: {
-			inter: ['Inter', 'sans-serif'],
+			montserrat: ['Montserrat', 'sans-serif'],
 		},
 		extend: {
 			colors: {
