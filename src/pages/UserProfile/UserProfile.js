@@ -21,8 +21,8 @@ const UserProfile = () => {
 			<section className='flex flex-col bg-gray-50'>
 				<div className='py-3 w-full border bg-white'>
 					<header className='flex w-8/12 items-start justify-between m-auto text-sm'>
-						{profileLinks.map((link) => (
-							<div>
+						{profileLinks.map((link, index) => (
+							<div key={index}>
 								<a
 									href='#'
 									className='font-semibold hover:text-secondary'>

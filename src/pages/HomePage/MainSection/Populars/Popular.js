@@ -1,15 +1,28 @@
+import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import FilterCard from './FilterCard'
 import SocialCard from './Socials/SocialCard'
 
 const Popular = () => {
+	const [posts, setPosts] = useState([])
+
+	useEffect(() => {
+		fetch('http://localhost:8000/userposts')
+			.then((response) => response.json())
+			.then((post) => setPosts(post))
+	}, [])
+
 	return (
 		<section className='w-9/12'>
 			<h2 className='font-semibold text-primary'>Popular posts</h2>
 
 			<div>
 				<FilterCard />
-				<SocialCard />
-				<SocialCard />
+				{posts.map((post) => (
+					<Link to={`/post/${post.id}`}>
+						<SocialCard {...post} key={post.id} />
+					</Link>
+				))}
 			</div>
 		</section>
 	)

@@ -1,3 +1,4 @@
+import { useHistory } from 'react-router-dom'
 import {
 	FaBan,
 	FaFlag,
@@ -14,6 +15,11 @@ import Header from '../HomePage/Header'
 import dummyVideo from '../../assets/javascript.mp4'
 
 const LiveVideo = () => {
+	const history = useHistory()
+
+	const goBack = () => {
+		history.goBack()
+	}
 	return (
 		<>
 			<Header />
@@ -21,7 +27,9 @@ const LiveVideo = () => {
 			<section className='bg-gray-800 flex items-center h-screen'>
 				<div className='m-auto flex bg-gray-600 h-5/6 rounded-lg shadow-md relative'>
 					<div className='absolute top-2 -right-16 w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center'>
-						<button className='text-2xl text-primary'>
+						<button
+							className='text-2xl text-primary'
+							onClick={goBack}>
 							<FaTimes />
 						</button>
 					</div>

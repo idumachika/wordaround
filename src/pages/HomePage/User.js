@@ -1,6 +1,9 @@
+import { useState } from 'react'
 import { FaCaretDown, FaSignOutAlt, FaUserCircle } from 'react-icons/fa'
 
-const User = () => {
+const User = ({ logOutUser }) => {
+	const [show, setShow] = useState(false)
+
 	return (
 		<>
 			<div className='flex items-center gap-2'>
@@ -12,12 +15,17 @@ const User = () => {
 				<p>SuperBreezy007</p>
 			</div>
 
-			<div>
-				<button>
+			<div className='relative'>
+				<button
+					className='p-1 hover:bg-gray-200'
+					onClick={() => setShow(!show)}>
 					<FaCaretDown />
 				</button>
 
-				<div className='bg-gray-100 hidden'>
+				<div
+					className={
+						show ? 'bg-gray-100 absolute right-0 w-max' : ' hidden'
+					}>
 					<div>
 						<header className='flex items-center gap-4 text-gray-500 p-4'>
 							<FaUserCircle />
@@ -43,12 +51,12 @@ const User = () => {
 						</div>
 					</div>
 
-					<a
-						href='#'
-						className='flex items-center gap-4 text-gray-500 p-4'>
+					<button
+						className='flex items-center gap-4 text-gray-500 p-4 hover:bg-gray-200'
+						onClick={logOutUser}>
 						<FaSignOutAlt />
 						<p>Log Out</p>
-					</a>
+					</button>
 				</div>
 			</div>
 		</>
