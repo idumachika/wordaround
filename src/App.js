@@ -4,13 +4,15 @@ import LiveVideo from './pages/LiveVideo/LiveVideo'
 import PostDetails from './pages/PostDetails/PostDetails'
 import UserProfile from './pages/UserProfile/UserProfile'
 
+
+
 function App() {
 	return (
 		<div className='App font-inter text-base'>
-			{/* <HomePage /> */}
-			{/* <PostDetails /> */}
-			{/* <CommunityProfile /> */}
-			{/* <LiveVideo /> */}
+			{/* <HomePage />
+			<PostDetails />
+			<CommunityProfile />
+			<LiveVideo /> */}
 			<UserProfile />
 		</div>
 	)
