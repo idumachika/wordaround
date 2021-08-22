@@ -1,51 +1,49 @@
-import React from 'react';
+import { useState } from 'react'
 import { FaApple, FaGoogle, FaTimes } from 'react-icons/fa'
-import { connect, Provider } from "react-redux";
-import { userActions } from "../../redux/actions/user.actons";
+import Modal from 'react-modal'
+import { connect } from 'react-redux';
 
+const customStyles = {
+	content: {
+		top: '50%',
+		left: '50%',
+		padding: '0px',
+		// right: 'auto',
+		bottom: 'auto',
+		transform: 'translate(-50%, -50%)',
+	},
+}
 
-class Login extends React.Component {
-	constructor(props) {
-		super(props)
+const Login = ({
+	closeModal,
+	logInModal,
+	afterOpenModal,
+	userInfo,
+	logInUser,
+	userPassword,
+	setUserPassword,
+	userEmail,
+	setUserEmail,
+}) => {
+	let subtitle
 
-		this.state = {
-			email: "",
-			password: "",
-		}
+	const [user, setUser] = useState(userInfo)
+	// const [token, setToken] = useState('')
 
-	}
+	return (
+		<Modal
+			isOpen={logInModal}
+			onAfterOpen={afterOpenModal}
+			onRequestClose={closeModal}
+			style={customStyles}
+			contentLabel='Example Modal'>
+			<div
+				ref={(_subtitle) => (subtitle = _subtitle)}
+				className='flex gap-6 relative'>
+				<div className='w-24 bg-gradient-to-b from-secondary  to-blue-700'></div>
 
-	componentDidMount = () => {
-		const { dispatch } = this.props;
-		dispatch(userActions.initStore());
-	}
-
-	handleChange = (e) => {
-		const { name, value } = e.target;
-		this.setState({ [name]: value });
-	}
-
-	handleSubmit = (e) => {
-		e.preventDefault();
-		this.setState({ submitted: true });
-		const { email, password } = this.state;
-		const { dispatch } = this.props;
-		if (email && password) {
-			this.setState({ submitted: true });
-			dispatch(userActions.login(email, password));
-
-		}
-		else {
-			this.setState({ submitted: false });
-		}
-	}
-	render() {
-		const { loggingIn, email, password } = this.props
-		console.log("this is the logging", loggingIn)
-		return (
-			<>
 				<button
-					onClick={this.props.closeModal}
+					onClick={closeModal}
 					className='text-gray-500 text-2xl absolute top-4 right-4 hover:text-gray-800'>
 					<FaTimes />
 				</button>
@@ -63,7 +61,9 @@ class Login extends React.Component {
 						</a>
 					</p>
 
-					<form className='flex items-start flex-col'>
+					<form
+						className='flex items-start flex-col'
+						onSubmit={logInUser}>
 						<div className='mt-12 w-3/4 flex flex-col'>
 							<button className='social-link'>
 								<FaGoogle className='text-lg' />
@@ -92,10 +92,10 @@ class Login extends React.Component {
 										name='username'
 										id='username'
 										className='border rounded p-2 mt-1'
-										value={email}
-										onChange={(email, e) => {
-											this.setState({ email });
-										}}
+										value={userEmail}
+										onChange={(e) =>
+											setUserEmail(e.target.value)
+										}
 									/>
 								</div>
 								<div className='flex flex-col pt-4'>
@@ -108,20 +108,18 @@ class Login extends React.Component {
 										type='password'
 										name='password'
 										id='password'
-
 										className='border rounded p-2 mt-1'
-										value={password}
-										onChange={(password, e) => {
-											this.setState({ password });
-										}}
+										value={userPassword}
+										onChange={(e) =>
+											setUserPassword(e.target.value)
+										}
 									/>
 								</div>
 
 								<button
 									type='submit'
-									disabled={loggingIn}
 									className='bg-secondary text-white p-2 rounded-full mt-4 font-bold hover:opacity-90'>
-									{loggingIn ? "Processing..." : "Login"}
+									Log in
 								</button>
 							</div>
 							<p className='text-xs pt-4'>
@@ -151,21 +149,20 @@ class Login extends React.Component {
 						</p>
 					</form>
 				</div>
-			</>
-		)
+
+				{/* <Login closeModal={closeModal} /> */}
+				{/* <Signup /> */}
+			</div>
+			{/* <div>this the modal i want to seeee and implement</div> */}
+		</Modal>
+	)
+}
+
+const mapStateToProps = state => {
+	return {
 
 	}
-
 }
 
-function mapStateToProps(state) {
-	// const { alert } = state;
-	const { loggingIn } = state.authentication;
-	// const { storage } = state.storage_reducer;
-	return {
-		loggingIn,
-		// alert
-	};
-}
 
 export default connect(mapStateToProps)(Login);

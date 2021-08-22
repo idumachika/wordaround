@@ -5,7 +5,7 @@ import Trending from './Trendings/Trending'
 const MainSection = () => {
 	return (
 		<main className='bg-page-bg'>
-			<section className='w-9/12 m-auto'>
+			<section className='w-8/12 m-auto'>
 				<Trending />
 
 				<div className='flex pt-8 gap-6'>

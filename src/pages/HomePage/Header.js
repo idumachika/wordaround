@@ -1,30 +1,25 @@
 import { FaCaretDown, FaSearch } from 'react-icons/fa'
-import React from 'react'
-import Modal from 'react-modal'
+import React, { useState } from 'react'
 import Login from '../Popup/Login'
 import Signup from '../Popup/Signup'
 // import Modal from '../Popup/Modal'
-// import NavBtns from './NavBtns'
-// import User from './User'
-
-const customStyles = {
-	content: {
-		top: '50%',
-		left: '50%',
-		padding: '0px',
-		// right: 'auto',
-		bottom: 'auto',
-		transform: 'translate(-50%, -50%)',
-	},
-}
+import NavBtns from './NavBtns'
+import User from './User'
+import { userInfo } from '../../data/userinfo'
 
 const Header = () => {
-	let subtitle
-
-	const [modalIsOpen, setIsOpen] = React.useState(false)
+	const [logInModal, setIsOpen] = useState(false)
+	const [signUpModal, setSignUpModal] = useState(false)
+	const [isUserLoggedIn, setIsUserLoggedIn] = useState(true)
+	const [userEmail, setUserEmail] = useState('')
+	const [userPassword, setUserPassword] = useState('')
 
 	function openModal() {
 		setIsOpen(true)
+	}
+
+	function openSignUpModal() {
+		setSignUpModal(true)
 	}
 
 	function afterOpenModal() {
@@ -34,32 +29,55 @@ const Header = () => {
 
 	function closeModal() {
 		setIsOpen(false)
+		setSignUpModal(false)
 	}
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
 	}
 
+	// function to log user in
+	const logInUser = (e) => {
+		e.preventDefault()
+		userInfo.map(({ password, email }) => {
+			console.log(email)
+			if (userEmail === email && password === userPassword) {
+				console.log('yh, u are fucking logged in asshole 🤣')
+				setIsOpen(false)
+				setUserEmail('')
+				setUserPassword('')
+				setIsUserLoggedIn(true)
+			} else {
+				console.log('ogbeni 😒 check your details')
+			}
+		})
+	}
+
+	const logOutUser = (e) => {
+		e.preventDefault()
+		setIsUserLoggedIn(false)
+	}
+
 	function renderAuthModal() {
 		return (
 			<div>
 				{/* <button onClick={openModal}>Open Modal</button> */}
-				<Modal
-					isOpen={modalIsOpen}
-					onAfterOpen={afterOpenModal}
-					onRequestClose={closeModal}
-					style={customStyles}
-					contentLabel='Example Modal'>
-					<div
-						ref={(_subtitle) => (subtitle = _subtitle)}
-						className='flex gap-6 relative'>
-						<div className='w-24 bg-gradient-to-b from-secondary  to-blue-700'></div>
-
-						<Login closeModal={closeModal} />
-						{/* <Signup /> */}
-					</div>
-					{/* <div>this the modal i want to seeee and implement</div> */}
-				</Modal>
+				<Login
+					closeModal={closeModal}
+					logInModal={logInModal}
+					afterOpenModal={afterOpenModal}
+					userInfo={userInfo}
+					logInUser={logInUser}
+					userEmail={userEmail}
+					setUserEmail={setUserEmail}
+					userPassword={userPassword}
+					setUserPassword={setUserPassword}
+				/>
+				<Signup
+					closeModal={closeModal}
+					signUpModal={signUpModal}
+					afterOpenModal={afterOpenModal}
+				/>
 			</div>
 		)
 	}
@@ -68,7 +86,7 @@ const Header = () => {
 		<header className='px-8 py-2 flex items-center justify-between shadow-md gap-8 sticky top-0 bg-white'>
 			<div className='flex flex-1 items-center'>
 				<h1 className='font-semibold text-xl uppercase'>WordAround</h1>
-				{renderAuthModal()}
+				{renderAuthModal(logInModal)}
 
 				<form
 					className='flex w-full pl-8 relative'
@@ -88,36 +106,39 @@ const Header = () => {
 			</div>
 			<div className='flex gap-4'>
 				{/* before user is logged in or after logging out */}
-				<div className='flex gap-4 text-sm'>
-					<div>
-						<button
-							onClick={openModal}
-							type='button'
-							className='btn text-secondary'>
-							Log in
+				{!isUserLoggedIn ? (
+					<>
+						<div className='flex gap-4 text-sm'>
+							<div>
+								<button
+									onClick={openModal}
+									type='button'
+									className='btn text-secondary'>
+									Log in
+								</button>
+							</div>
+							<button
+								onClick={openSignUpModal}
+								type='button'
+								className='btn bg-secondary border-0 text-white'>
+								Sign up
+							</button>
+						</div>
+						<button>
+							<FaCaretDown />
 						</button>
-					</div>
-					<button
-						type='button'
-						className='btn bg-secondary border-0 text-white'>
-						Sign up
-					</button>
-				</div>
+					</>
+				) : (
+					<div className='flex'>
+						<div className='flex text-sm pr-5'>
+							<NavBtns />
+						</div>
 
-				{/* after user is logged in */}
-				{/* <div className='flex'>
-					<div className='flex text-sm pr-5'>
-						<NavBtns />
+						<div className='flex items-center gap-4 border'>
+							<User logOutUser={logOutUser} />
+						</div>
 					</div>
-
-					<div className='flex items-center gap-10'>
-						<User />
-					</div>
-				</div> */}
-
-				<button>
-					<FaCaretDown />
-				</button>
+				)}
 			</div>
 		</header>
 	)

@@ -1,12 +1,5 @@
-import {
-	FaBell,
-	FaCaretDown,
-	FaLevelUpAlt,
-	FaPlus,
-	FaSearch,
-	FaSpinner,
-	FaVideo,
-} from 'react-icons/fa'
+import { Link } from 'react-router-dom'
+import { FaBell, FaPlus, FaVideo } from 'react-icons/fa'
 import { GiChatBubble } from 'react-icons/gi'
 const NavBtns = () => {
 	return (
@@ -22,10 +15,10 @@ const NavBtns = () => {
 								<span className='font-semibold'>All</span>
 							</button> */}
 
-				<button className='nav-btn'>
+				<Link to='/live' className='nav-btn'>
 					<FaVideo />
 					<span className='font-semibold'>Live</span>
-				</button>
+				</Link>
 			</div>
 
 			<div className='flex items-center gap-2 pl-2'>
