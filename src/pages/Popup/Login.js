@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { FaApple, FaGoogle, FaTimes } from 'react-icons/fa'
 import Modal from 'react-modal'
+import { connect } from 'react-redux';
 
 const customStyles = {
 	content: {
@@ -157,4 +158,11 @@ const Login = ({
 	)
 }
 
-export default Login
+const mapStateToProps = state => {
+	return {
+
+	}
+}
+
+
+export default connect(mapStateToProps)(Login);

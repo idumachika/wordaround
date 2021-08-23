@@ -5,6 +5,8 @@ import PostDetails from './pages/PostDetails/PostDetails'
 import UserProfile from './pages/UserProfile/UserProfile'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
+
+
 function App() {
 	return (
 		<Router>

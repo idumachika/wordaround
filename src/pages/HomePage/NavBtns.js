@@ -15,7 +15,7 @@ const NavBtns = () => {
 								<span className='font-semibold'>All</span>
 							</button> */}
 
-				<Link to='/live-video' className='nav-btn'>
+				<Link to='/live' className='nav-btn'>
 					<FaVideo />
 					<span className='font-semibold'>Live</span>
 				</Link>
