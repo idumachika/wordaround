@@ -8,7 +8,7 @@ const PostDetails = () => {
 	const [mainPost, setMainPost] = useState([])
 
 	useEffect(() => {
-		fetch('http://localhost:8000/userposts/' + id)
+		fetch('https://wordaround-api.herokuapp.com/userposts/' + id)
 			.then((response) => response.json())
 			.then((post) => {
 				setMainPost(post)
