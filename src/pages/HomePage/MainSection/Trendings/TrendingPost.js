@@ -4,7 +4,7 @@ const TrendingPost = () => {
 	const [trending, setTrending] = useState([])
 
 	useEffect(() => {
-		fetch('http://localhost:8000/trendingpost')
+		fetch('https://wordaround-api.herokuapp.com/trendingpost')
 			.then((response) => response.json())
 			.then((data) => setTrending(data))
 	}, [])

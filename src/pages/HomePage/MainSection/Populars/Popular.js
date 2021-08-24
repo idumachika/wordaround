@@ -7,9 +7,12 @@ const Popular = () => {
 	const [posts, setPosts] = useState([])
 
 	useEffect(() => {
-		fetch('http://localhost:8000/userposts')
+		fetch('https://wordaround-api.herokuapp.com/userposts')
 			.then((response) => response.json())
-			.then((post) => setPosts(post))
+			.then((post) => {
+				console.log(post)
+				setPosts(post)
+			})
 	}, [])
 
 	return (
