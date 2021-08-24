@@ -2,7 +2,7 @@ import { userConstants } from "../constants/user.constant";
 let user = JSON.parse(localStorage.getItem('user'));
 const initialState = user ? { loggedIn: true, user } : {};
 
-export function authentication(state = initialState, action) {
+ export function authentication(state = initialState, action) {
     switch (action.type) {
         case userConstants.LOGIN_REQUEST:
             return {
@@ -24,3 +24,28 @@ export function authentication(state = initialState, action) {
             return state
     }
 }
+
+export function userSignUpRequest(state = {}, action) {
+    switch (action.type) {
+        case userConstants.SIGNUP_REQUEST:
+            return {
+                user_signup_status:userConstants.SIGNUP_REQUEST,
+                // user_signup_data: action,
+            };
+        case userConstants.SIGNUP_SUCCESS:
+            return {
+                user_signup_status:userConstants.SIGNUP_SUCCESS,
+                // registration_step: 1
+            };
+        case userConstants.SIGNUP_FAILURE:
+            return {
+                user_signup_status: userConstants.SIGNUP_FAILURE,
+            };
+        
+        default:
+            return {
+                ...state,
+            };
+    }
+}
+

@@ -1,4 +1,4 @@
-const URL = 'https://api.alat.ng';
+const URL = 'https://app-backend2-vb8jj.ondigitalocean.app/api';
 
 const BASEURL = URL;
 
@@ -8,8 +8,8 @@ export const routes = {
 
 
     //login
-    LOGIN: BASEURL + '/UserSecurityApi/api/v1/Account/LoginV2',
-    LOANS_STEP_1: BASEURL + '/DL_LoanOnboardingAPI/api/DigitalLendingOnBoarding/SignUp',
+    LOGIN: BASEURL + '/login',
+    SIGNUP: BASEURL + '/register',
 
 
 
