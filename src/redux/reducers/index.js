@@ -1,6 +1,7 @@
 import { combineReducers } from "redux";
-import { authentication } from "./authentication.reducer";
-import { userConstants } from "../constants/user.constant";
+import { authentication, UserSignUpReducer } from "./authentication.reducer";
+import { userConstants, } from "../constants/user.constant";
+import { onboarding } from './export'
 
 
 const rootReducer = (state, action) => {
@@ -14,7 +15,9 @@ const rootReducer = (state, action) => {
 
 
 const appReducer = combineReducers({
-    authentication
+    authentication,
+    onboarding_user_details: onboarding.userSignUpRequest,
+
 })
 
 

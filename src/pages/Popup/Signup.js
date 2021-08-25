@@ -1,5 +1,12 @@
+import { useState } from 'react'
 import { FaApple, FaGoogle, FaTimes } from 'react-icons/fa'
 import Modal from 'react-modal'
+import { connect } from 'react-redux';
+import { userActions } from "../../redux/actions/user.actons";
+import { useDispatch, useSelector } from "react-redux";
+import { SIGNUP_REQUEST, SIGNUP_SUCCESS, SIGNUP_FAILURE } from '../../redux/constants/user.constant'
+
+
 
 const customStyles = {
 	content: {
@@ -12,8 +19,31 @@ const customStyles = {
 	},
 }
 
-const Signup = ({ closeModal, signUpModal, afterOpenModal }) => {
+const Signup = ({ closeModal, signUpModal, afterOpenModal, user_signup_status }) => {
+
 	let subtitle
+	const [name, setName] = useState('')
+	const [email, setEmail] = useState('')
+	const [password, setPassword] = useState('')
+	const [confirm_password, setconfirm_password] = useState('')
+	const dispatch = useDispatch();
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		// this.setState({ submitted: true });
+		console.log("this is the email and password ", email, password)
+		console.log("this is the user_signup_status", user_signup_status)
+		// const { dispatch } = this.props;
+		if (name && email && password && confirm_password) {
+			// this.setState({ submitted: true });
+			dispatch(userActions.signUp(name, email, password, confirm_password));
+
+		}
+		else {
+			// this.setState({ submitted: false });
+		}
+	}
+
 
 	return (
 		<Modal
@@ -125,6 +155,21 @@ const Signup = ({ closeModal, signUpModal, afterOpenModal }) => {
 									<label
 										htmlFor='username'
 										className='text-xs font-bold uppercase tracking-wide'>
+										Name
+									</label>
+									<input
+										type='text'
+										name='Full Name'
+										id='name'
+										className='border rounded p-2 mt-1'
+										value={name}
+										onChange={(e) =>
+											setName(e.target.value)
+										}
+									/>
+									<label
+										htmlFor='username'
+										className='text-xs font-bold uppercase tracking-wide'>
 										Email address
 									</label>
 									<input
@@ -132,10 +177,44 @@ const Signup = ({ closeModal, signUpModal, afterOpenModal }) => {
 										name='email'
 										id='email'
 										className='border rounded p-2 mt-1'
+										value={email}
+										onChange={(e) =>
+											setEmail(e.target.value)
+										}
+									/>
+									<label
+										htmlFor='username'
+										className='text-xs font-bold uppercase tracking-wide'>
+										Password
+									</label>
+									<input
+										type='text'
+										name='password'
+										id='password'
+										className='border rounded p-2 mt-1'
+										value={password}
+										onChange={(e) =>
+											setPassword(e.target.value)
+										}
+									/>
+									<label
+										htmlFor='username'
+										className='text-xs font-bold uppercase tracking-wide'>
+										Confirm Password
+									</label>
+									<input
+										type='text'
+										name='confirm_password'
+										id='confirm_password'
+										className='border rounded p-2 mt-1'
+										value={confirm_password}
+										onChange={(e) =>
+											setconfirm_password(e.target.value)
+										}
 									/>
 								</div>
 
-								<button
+								<button onClick={handleSubmit}
 									type='submit'
 									className='bg-secondary text-white p-2 rounded-full mt-4 font-bold hover:opacity-90'>
 									Continue
@@ -159,4 +238,10 @@ const Signup = ({ closeModal, signUpModal, afterOpenModal }) => {
 	)
 }
 
-export default Signup
+const mapStateToProps = state => ({
+	user_signup_status: state.onboarding_user_details
+});
+
+const mapDispatchToProps = { userActions };
+
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);

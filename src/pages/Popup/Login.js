@@ -2,6 +2,10 @@ import { useState } from 'react'
 import { FaApple, FaGoogle, FaTimes } from 'react-icons/fa'
 import Modal from 'react-modal'
 import { connect } from 'react-redux';
+import { userActions } from "../../redux/actions/user.actons";
+import { useDispatch, useSelector } from "react-redux";
+
+
 
 const customStyles = {
 	content: {
@@ -29,6 +33,27 @@ const Login = ({
 
 	const [user, setUser] = useState(userInfo)
 	// const [token, setToken] = useState('')
+	const [email, setEmail] = useState('')
+	const [password, setPassword] = useState('')
+	const dispatch = useDispatch();
+
+
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		// this.setState({ submitted: true });
+		console.log("this is the email and password ", email, password)
+		// const { dispatch } = this.props;
+		if (email && password) {
+			// this.setState({ submitted: true });
+			dispatch(userActions.login(email, password));
+
+		}
+		else {
+			// this.setState({ submitted: false });
+		}
+	}
+
 
 	return (
 		<Modal
@@ -92,9 +117,9 @@ const Login = ({
 										name='username'
 										id='username'
 										className='border rounded p-2 mt-1'
-										value={userEmail}
+										value={email}
 										onChange={(e) =>
-											setUserEmail(e.target.value)
+											setEmail(e.target.value)
 										}
 									/>
 								</div>
@@ -109,14 +134,15 @@ const Login = ({
 										name='password'
 										id='password'
 										className='border rounded p-2 mt-1'
-										value={userPassword}
+										value={password}
 										onChange={(e) =>
-											setUserPassword(e.target.value)
+											setPassword(e.target.value)
 										}
 									/>
 								</div>
 
 								<button
+									onClick={handleSubmit}
 									type='submit'
 									className='bg-secondary text-white p-2 rounded-full mt-4 font-bold hover:opacity-90'>
 									Log in
@@ -158,11 +184,11 @@ const Login = ({
 	)
 }
 
-const mapStateToProps = state => {
-	return {
+const mapStateToProps = state => ({
+	// count: state.counter.count
+});
 
-	}
-}
+const mapDispatchToProps = { userActions };
 
 
-export default connect(mapStateToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
