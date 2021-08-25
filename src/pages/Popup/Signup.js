@@ -4,11 +4,7 @@ import Modal from 'react-modal'
 import { connect } from 'react-redux'
 import { userActions } from '../../redux/actions/user.actons'
 import { useDispatch, useSelector } from 'react-redux'
-import {
-	SIGNUP_REQUEST,
-	SIGNUP_SUCCESS,
-	SIGNUP_FAILURE,
-} from '../../redux/constants/user.constant'
+import { userConstants } from '../../redux/constants/user.constant'
 
 const customStyles = {
 	content: {
@@ -28,27 +24,25 @@ const Signup = ({
 	user_signup_status,
 }) => {
 	let subtitle
-	const [name, setName] = useState('')
-	const [email, setEmail] = useState('')
-	const [password, setPassword] = useState('')
-	const [confirm_password, setconfirm_password] = useState('')
+	const [name, setName] = useState("");
+	const [email, setEmail] = useState("");
+	const [ password, setPassword]= useState("");
+	const [confirm_password, setConfirmPassword]= useState("")
+    const [submitted, setSubmitted] = useState(false);
+	const registering = useSelector(state => state.onboarding_user_details.registering);
+	const alert = useSelector(state => state.alert);
 	const dispatch = useDispatch()
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
-		// this.setState({ submitted: true });
-		console.log('this is the email and password ', email, password)
-		console.log('this is the user_signup_status', user_signup_status)
-		// const { dispatch } = this.props;
+		setSubmitted(true)
 		if (name && email && password && confirm_password) {
-			// this.setState({ submitted: true });
-			dispatch(
-				userActions.signUp(name, email, password, confirm_password)
-			)
-		} else {
-			// this.setState({ submitted: false });
+		      dispatch(userActions.signUp(name, email, password, confirm_password))
+        } else {
 		}
 	}
+
+	
 
 	return (
 		<Modal
@@ -153,6 +147,9 @@ const Signup = ({
 						<p className='uppercase font-bold pt-8 text-gray-400 tracking-widest'>
 							or
 						</p>
+						{alert.message &&
+                           <div className={`alert ${alert.type}`}>{alert.message}</div>
+                        }
 
 						<div className='w-3/4'>
 							<div className='flex flex-col pt-6'>
@@ -166,17 +163,16 @@ const Signup = ({
 										<input
 											type='text'
 											name='Full Name'
-											id='name'
+											id='full Name'
 											className='border rounded p-2 mt-1'
 											value={name}
-											onChange={(e) =>
-												setName(e.target.value)
-											}
+											onChange={(e)=>setName(e.target.value)}
 										/>
 										{/* error message */}
-										{/* <span className='text-xs italic text-red-500'>
-											Username cannot be empty
-										</span> */}
+									     {submitted && !name &&<span className='text-xs italic text-red-500'>
+										 Name is required
+										</span>                   
+										 }
 										{/* Add this is the username the user choose already exist in database */}
 										{/* <span className='text-xs italic text-red-500'>
 											Sorry, username already exist
@@ -194,14 +190,14 @@ const Signup = ({
 											id='email'
 											className='border rounded p-2 mt-1'
 											value={email}
-											onChange={(e) =>
-												setEmail(e.target.value)
-											}
+											onChange={(e)=>setEmail(e.target.value)}
 										/>
 										{/* error message */}
-										{/* <span className='text-xs italic text-red-500'>
-											Email cannot be empty
-										</span> */}
+										{/* error message */}
+									     {submitted && !email &&<span className='text-xs italic text-red-500'>
+										 Email is required
+										</span>                   
+										 }
 									</div>
 									<div className='flex flex-col pt-4'>
 										<label
@@ -215,14 +211,13 @@ const Signup = ({
 											id='password'
 											className='border rounded p-2 mt-1'
 											value={password}
-											onChange={(e) =>
-												setPassword(e.target.value)
-											}
+											onChange={(e)=>setPassword(e.target.value)}
 										/>
 										{/* error message */}
-										{/* <span className='text-xs italic text-red-500'>
-											Password cannot be empty
-										</span> */}
+										{submitted && !password &&<span className='text-xs italic text-red-500'>
+											Password is required 
+										</span>                   
+										 }
 									</div>
 									<div className='flex flex-col pt-4'>
 										<label
@@ -236,16 +231,13 @@ const Signup = ({
 											id='confirm_password'
 											className='border rounded p-2 mt-1'
 											value={confirm_password}
-											onChange={(e) =>
-												setconfirm_password(
-													e.target.value
-												)
-											}
+											onChange={(e)=>setConfirmPassword(e.target.value)}
 										/>
 										{/* error message */}
-										{/* <span className='text-xs italic text-red-500'>
-											Password cannot be empty
-										</span> */}
+										{submitted && !confirm_password &&<span className='text-xs italic text-red-500'>
+											Password must match
+										</span>                   
+										 }
 
 										{/* Add this if password does not match */}
 										{/* <span className='text-xs italic text-red-500'>
@@ -255,10 +247,14 @@ const Signup = ({
 								</div>
 
 								<button
-									onClick={handleSubmit}
+								   onClick={handleSubmit}
 									type='submit'
 									className='bg-secondary text-white p-2 rounded-full mt-4 font-bold hover:opacity-90'>
+								    {registering && <span className="spinner-border spinner-border-sm mr-1">
+									</span>}
+
 									Continue
+									
 								</button>
 							</div>
 						</div>

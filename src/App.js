@@ -4,13 +4,18 @@ import LiveVideo from './pages/LiveVideo/LiveVideo'
 import PostDetails from './pages/PostDetails/PostDetails'
 import UserProfile from './pages/UserProfile/UserProfile'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux';
 
 
 
 function App() {
+	 const alert = useSelector(state => state.alert);
+      const dispatch = useDispatch();
+
 	return (
 		<Router>
 			<div className='App font-poppins text-base'>
+			
 				<Switch>
 					<Route path='/post/:id'>
 						<PostDetails />
