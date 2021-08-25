@@ -1,6 +1,7 @@
 import { ApiService } from "../../services/apiService";
 import { routes } from "../../services/urls";
 import { userConstants } from "../constants/user.constant";
+import { alertActions } from './alert.actions'
 import axios from "axios";
 
 
@@ -56,28 +57,32 @@ function login(email, password) {
 function signUp(name, email, password, confirm_password) {
     console.log("this is the action files ", email, password)
     return dispatch => {
-        dispatch(request({ email }));
         let data = {
             name: name,
-            email: email,
-            password: password,
-            confirm_password: confirm_password,
+            email:email,
+            password:password,
+            confirm_password:confirm_password,
 
         };
 
-        let consume = axios.post(routes.SIGNUP, data, {
+        let consume = axios.post(routes.SIGNUP, data,);
+        dispatch(request(consume));
 
-            // headers
-        });
-        console.log('tag===========', consume)
+        // console.log('tag===========', consume)
         return consume
             .then(function (response) {
                 console.log("this is the response", response)
-                localStorage.setItem("user", JSON.stringify(response));
                 dispatch(success(response));
+                dispatch(alertActions.success('Registration successful'));
+
                 // history.push('/dashboard');
                 // history.push('/home');
             }).catch(error => {
+                console.log('this is the error', error.toString())
+                    dispatch(failure(error.toString()));
+                    dispatch(alertActions.error(error.toString()));
+
+
                 console.log("this is the error ", error)
             });
 

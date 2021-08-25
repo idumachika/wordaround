@@ -30,6 +30,7 @@ export function userSignUpRequest(state = {}, action) {
         case userConstants.SIGNUP_REQUEST:
             return {
                 user_signup_status:userConstants.SIGNUP_REQUEST,
+                registering:true
                 // user_signup_data: action,
             };
         case userConstants.SIGNUP_SUCCESS:
