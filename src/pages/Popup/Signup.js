@@ -1,12 +1,14 @@
 import { useState } from 'react'
 import { FaApple, FaGoogle, FaTimes } from 'react-icons/fa'
 import Modal from 'react-modal'
-import { connect } from 'react-redux';
-import { userActions } from "../../redux/actions/user.actons";
-import { useDispatch, useSelector } from "react-redux";
-import { SIGNUP_REQUEST, SIGNUP_SUCCESS, SIGNUP_FAILURE } from '../../redux/constants/user.constant'
-
-
+import { connect } from 'react-redux'
+import { userActions } from '../../redux/actions/user.actons'
+import { useDispatch, useSelector } from 'react-redux'
+import {
+	SIGNUP_REQUEST,
+	SIGNUP_SUCCESS,
+	SIGNUP_FAILURE,
+} from '../../redux/constants/user.constant'
 
 const customStyles = {
 	content: {
@@ -19,31 +21,34 @@ const customStyles = {
 	},
 }
 
-const Signup = ({ closeModal, signUpModal, afterOpenModal, user_signup_status }) => {
-
+const Signup = ({
+	closeModal,
+	signUpModal,
+	afterOpenModal,
+	user_signup_status,
+}) => {
 	let subtitle
 	const [name, setName] = useState('')
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 	const [confirm_password, setconfirm_password] = useState('')
-	const dispatch = useDispatch();
+	const dispatch = useDispatch()
 
 	const handleSubmit = (e) => {
-		e.preventDefault();
+		e.preventDefault()
 		// this.setState({ submitted: true });
-		console.log("this is the email and password ", email, password)
-		console.log("this is the user_signup_status", user_signup_status)
+		console.log('this is the email and password ', email, password)
+		console.log('this is the user_signup_status', user_signup_status)
 		// const { dispatch } = this.props;
 		if (name && email && password && confirm_password) {
 			// this.setState({ submitted: true });
-			dispatch(userActions.signUp(name, email, password, confirm_password));
-
-		}
-		else {
+			dispatch(
+				userActions.signUp(name, email, password, confirm_password)
+			)
+		} else {
 			// this.setState({ submitted: false });
 		}
 	}
-
 
 	return (
 		<Modal
@@ -121,7 +126,7 @@ const Signup = ({ closeModal, signUpModal, afterOpenModal, user_signup_status })
 				</div> */}
 
 				<div className='pr-10 py-6'>
-					<h2 className='font-bold'>Login</h2>
+					<h2 className='font-bold'>Join us</h2>
 					<p className='text-xs pt-1'>
 						By continuing, you agree to our{' '}
 						<a href='#' className='text-secondary hover:underline'>
@@ -134,7 +139,7 @@ const Signup = ({ closeModal, signUpModal, afterOpenModal, user_signup_status })
 					</p>
 
 					<form className='flex items-start flex-col'>
-						<div className='mt-12 w-3/4 flex flex-col'>
+						<div className='mt-8 w-3/4 flex flex-col'>
 							<button className='social-link'>
 								<FaGoogle className='text-lg' />
 								<span>Continue with Google</span>
@@ -150,71 +155,107 @@ const Signup = ({ closeModal, signUpModal, afterOpenModal, user_signup_status })
 						</p>
 
 						<div className='w-3/4'>
-							<div className='flex flex-col pt-8'>
-								<div className='flex flex-col pt-4'>
-									<label
-										htmlFor='username'
-										className='text-xs font-bold uppercase tracking-wide'>
-										Name
-									</label>
-									<input
-										type='text'
-										name='Full Name'
-										id='name'
-										className='border rounded p-2 mt-1'
-										value={name}
-										onChange={(e) =>
-											setName(e.target.value)
-										}
-									/>
-									<label
-										htmlFor='username'
-										className='text-xs font-bold uppercase tracking-wide'>
-										Email address
-									</label>
-									<input
-										type='email'
-										name='email'
-										id='email'
-										className='border rounded p-2 mt-1'
-										value={email}
-										onChange={(e) =>
-											setEmail(e.target.value)
-										}
-									/>
-									<label
-										htmlFor='username'
-										className='text-xs font-bold uppercase tracking-wide'>
-										Password
-									</label>
-									<input
-										type='text'
-										name='password'
-										id='password'
-										className='border rounded p-2 mt-1'
-										value={password}
-										onChange={(e) =>
-											setPassword(e.target.value)
-										}
-									/>
-									<label
-										htmlFor='username'
-										className='text-xs font-bold uppercase tracking-wide'>
-										Confirm Password
-									</label>
-									<input
-										type='text'
-										name='confirm_password'
-										id='confirm_password'
-										className='border rounded p-2 mt-1'
-										value={confirm_password}
-										onChange={(e) =>
-											setconfirm_password(e.target.value)
-										}
-									/>
+							<div className='flex flex-col pt-6'>
+								<div>
+									<div className='flex flex-col pt-3'>
+										<label
+											htmlFor='username'
+											className='text-xs font-bold uppercase tracking-wide'>
+											Name
+										</label>
+										<input
+											type='text'
+											name='Full Name'
+											id='name'
+											className='border rounded p-2 mt-1'
+											value={name}
+											onChange={(e) =>
+												setName(e.target.value)
+											}
+										/>
+										{/* error message */}
+										{/* <span className='text-xs italic text-red-500'>
+											Username cannot be empty
+										</span> */}
+										{/* Add this is the username the user choose already exist in database */}
+										{/* <span className='text-xs italic text-red-500'>
+											Sorry, username already exist
+										</span> */}
+									</div>
+									<div className='flex flex-col pt-4'>
+										<label
+											htmlFor='username'
+											className='text-xs font-bold uppercase tracking-wide'>
+											Email address
+										</label>
+										<input
+											type='email'
+											name='email'
+											id='email'
+											className='border rounded p-2 mt-1'
+											value={email}
+											onChange={(e) =>
+												setEmail(e.target.value)
+											}
+										/>
+										{/* error message */}
+										{/* <span className='text-xs italic text-red-500'>
+											Email cannot be empty
+										</span> */}
+									</div>
+									<div className='flex flex-col pt-4'>
+										<label
+											htmlFor='username'
+											className='text-xs font-bold uppercase tracking-wide'>
+											Password
+										</label>
+										<input
+											type='text'
+											name='password'
+											id='password'
+											className='border rounded p-2 mt-1'
+											value={password}
+											onChange={(e) =>
+												setPassword(e.target.value)
+											}
+										/>
+										{/* error message */}
+										{/* <span className='text-xs italic text-red-500'>
+											Password cannot be empty
+										</span> */}
+									</div>
+									<div className='flex flex-col pt-4'>
+										<label
+											htmlFor='username'
+											className='text-xs font-bold uppercase tracking-wide'>
+											Confirm Password
+										</label>
+										<input
+											type='text'
+											name='confirm_password'
+											id='confirm_password'
+											className='border rounded p-2 mt-1'
+											value={confirm_password}
+											onChange={(e) =>
+												setconfirm_password(
+													e.target.value
+												)
+											}
+										/>
+										{/* error message */}
+										{/* <span className='text-xs italic text-red-500'>
+											Password cannot be empty
+										</span> */}
+
+										{/* Add this if password does not match */}
+										{/* <span className='text-xs italic text-red-500'>
+											Password does not match
+										</span> */}
+									</div>
 								</div>
 
-								<button onClick={handleSubmit}
+								<button
+									onClick={handleSubmit}
 									type='submit'
 									className='bg-secondary text-white p-2 rounded-full mt-4 font-bold hover:opacity-90'>
 									Continue
@@ -238,10 +279,10 @@ const Signup = ({ closeModal, signUpModal, afterOpenModal, user_signup_status })
 	)
 }
 
-const mapStateToProps = state => ({
-	user_signup_status: state.onboarding_user_details
-});
+const mapStateToProps = (state) => ({
+	user_signup_status: state.onboarding_user_details,
+})
 
-const mapDispatchToProps = { userActions };
+const mapDispatchToProps = { userActions }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Signup);
+export default connect(mapStateToProps, mapDispatchToProps)(Signup)
