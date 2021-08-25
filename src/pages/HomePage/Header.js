@@ -144,7 +144,7 @@ const Header = () => {
 							<NavBtns />
 						</div>
 
-						<div className='flex items-center gap-4 border'>
+						<div className='flex items-center gap-4 border rounded-full p-1'>
 							<User logOutUser={logOutUser} />
 						</div>
 					</div>

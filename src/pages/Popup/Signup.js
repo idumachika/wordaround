@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { userActions } from '../../redux/actions/user.actons'
 import { useDispatch, useSelector } from 'react-redux'
 import { userConstants } from '../../redux/constants/user.constant'
+import ErrorAlert from '../AlertComponents/ErrorAlert'
 
 const customStyles = {
 	content: {
@@ -80,11 +81,11 @@ const Signup = ({
 
 					<form className='flex items-start flex-col md:gap-4 sm:items-center'>
 						<div className='mt-8 w-3/4 flex flex-col lg:mt-4 '>
-							<button className='social-link focus:ring'>
+							<button className='social-link'>
 								<FaGoogle className='text-lg lg:text-base' />
 								<span>Continue with Google</span>
 							</button>
-							<button className='social-link mt-2 focus:ring'>
+							<button className='social-link mt-2'>
 								<FaApple className='text-2xl lg:text-base' />
 								<span>Continue with Apple</span>
 							</button>
@@ -93,6 +94,7 @@ const Signup = ({
 						<p className='uppercase font-bold pt-8 lg:pt-6 text-gray-400 tracking-widest md:hidden'>
 							or
 						</p>
+
 						{alert.message && (
 							<div className={`alert ${alert.type}`}>
 								{alert.message}
@@ -100,7 +102,7 @@ const Signup = ({
 						)}
 
 						<div className='w-3/4'>
-							<div className='flex flex-col pt-6 lg:pt-4'>
+							<div className='flex flex-col pt-3 lg:pt-4'>
 								<div>
 									<div className='flex flex-col pt-3'>
 										<label
@@ -213,7 +215,7 @@ const Signup = ({
 								<button
 									onClick={handleSubmit}
 									type='submit'
-									className='bg-secondary text-white p-2 rounded-full mt-4 font-bold hover:opacity-90 flex items-center justify-center focus:ring'>
+									className='bg-secondary text-white p-2 rounded-full mt-4 font-bold hover:opacity-90 flex items-center justify-center'>
 									{registering && (
 										<svg
 											class='animate-spin -ml-1 mr-3 h-5 w-5 text-white'
@@ -233,7 +235,7 @@ const Signup = ({
 												d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z'></path>
 										</svg>
 									)}
-									Continue
+									{registering ? 'Processing...' : 'Continue'}
 								</button>
 							</div>
 						</div>

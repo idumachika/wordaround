@@ -3,10 +3,11 @@
 @tailwind utilities;
 
 button {
-	@apply focus:outline-none;
+	@apply focus:outline-none focus:ring;
 }
+
 .btn {
-	@apply px-8 py-1 border border-secondary font-semibold rounded-full focus:outline-none focus:ring;
+	@apply px-8 py-1 border border-secondary font-semibold rounded-full focus:outline-none;
 }
 
 .nav-btn {
