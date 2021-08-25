@@ -4,7 +4,7 @@ import Tags from './Tags'
 
 const Sidebar = () => {
 	return (
-		<aside className='w-2/5'>
+		<aside className='w-2/5 md:hidden'>
 			<div className=' bg-white rounded overflow-hidden'>
 				<div className='bg-gray-600 h-20 px-4 pb-2'>
 					<h2 className='flex items-end h-full'>

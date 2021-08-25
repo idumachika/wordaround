@@ -16,14 +16,14 @@ const Popular = () => {
 	}, [])
 
 	return (
-		<section className='w-9/12'>
+		<section className='w-9/12 lg:w-full'>
 			<h2 className='font-semibold text-primary'>Popular posts</h2>
 
 			<div>
 				<FilterCard />
-				{posts.map((post) => (
-					<Link to={`/post/${post.id}`}>
-						<SocialCard {...post} key={post.id} />
+				{posts.map((post, index) => (
+					<Link to={`/post/${post.id}`} key={index}>
+						<SocialCard {...post} />
 					</Link>
 				))}
 			</div>

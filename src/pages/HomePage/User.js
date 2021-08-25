@@ -6,7 +6,7 @@ const User = ({ logOutUser }) => {
 
 	return (
 		<>
-			<div className='flex items-center gap-2'>
+			<div className='flex items-center gap-2 sm:hidden'>
 				<img
 					src='https://b.thumbs.redditmedia.com/VZX_KQLnI1DPhlEZ07bIcLzwR1Win808RIt7zm49VIQ.png'
 					alt=''
@@ -48,6 +48,31 @@ const User = ({ logOutUser }) => {
 								className='py-2 px-12 hover:bg-gray-200'>
 								Settings
 							</a>
+
+							<div className='flex flex-col border-t-2 '>
+								<div className='hidden flex-col lg:flex'>
+									<a
+										href='#'
+										className='py-2 px-12 hover:bg-gray-200'>
+										Chat
+									</a>
+									<a
+										href='#'
+										className='py-2 px-12 hover:bg-gray-200'>
+										Notifications
+									</a>
+									<a
+										href='#'
+										className='py-2 px-12 hover:bg-gray-200'>
+										Create Post
+									</a>
+								</div>
+								<a
+									href='#'
+									className='py-2 px-12 hover:bg-gray-200 hidden md:block'>
+									Live
+								</a>
+							</div>
 						</div>
 					</div>
 

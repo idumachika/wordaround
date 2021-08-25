@@ -1,4 +1,4 @@
-import { FaCaretDown, FaSearch } from 'react-icons/fa'
+import { FaCaretDown, FaSearch, FaUserAlt } from 'react-icons/fa'
 import React, { useState } from 'react'
 import Login from '../Popup/Login'
 import Signup from '../Popup/Signup'
@@ -83,13 +83,15 @@ const Header = () => {
 	}
 
 	return (
-		<header className='px-8 py-2 flex items-center justify-between shadow-md gap-8 sticky top-0 bg-white'>
+		<header className='px-8 py-2 flex items-center justify-between shadow-md gap-8 sticky top-0 bg-white sm:px-2 sm:gap-2'>
 			<div className='flex flex-1 items-center'>
-				<h1 className='font-semibold text-xl uppercase'>WordAround</h1>
+				<h1 className='font-semibold text-xl uppercase sm:capitalize sm:text-lg xs:text-sm xs:text-red-300'>
+					WordAround
+				</h1>
 				{renderAuthModal(logInModal)}
 
 				<form
-					className='flex w-full pl-8 relative'
+					className='flex w-full pl-8 relative sm:pl-2'
 					onSubmit={handleSubmit}>
 					<label
 						htmlFor='search'
@@ -100,7 +102,7 @@ const Header = () => {
 						type='text'
 						id='search'
 						placeholder='Search WordAround'
-						className='bg-gray-100 rounded-full py-2 px-10 text-sm font-semibold flex-1'
+						className='bg-gray-100 rounded py-2 px-10 text-sm font-semibold flex-1 focus:outline-none sm:text-xs'
 					/>
 				</form>
 			</div>
@@ -108,7 +110,7 @@ const Header = () => {
 				{/* before user is logged in or after logging out */}
 				{!isUserLoggedIn ? (
 					<>
-						<div className='flex gap-4 text-sm'>
+						<div className='flex gap-4 text-sm md:absolute md:right-3 md:top-14 md:rounded md:flex-col md:bg-white md:p-4 md:shadow md:hidden'>
 							<div>
 								<button
 									onClick={openModal}
@@ -124,13 +126,14 @@ const Header = () => {
 								Sign up
 							</button>
 						</div>
-						<button>
+						<button className='flex items-center gap-1 border rounded px-1'>
+							<FaUserAlt />
 							<FaCaretDown />
 						</button>
 					</>
 				) : (
 					<div className='flex'>
-						<div className='flex text-sm pr-5'>
+						<div className='flex text-sm pr-5 md:pr-0'>
 							<NavBtns />
 						</div>
 

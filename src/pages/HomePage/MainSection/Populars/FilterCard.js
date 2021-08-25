@@ -3,7 +3,7 @@ import { FaFire, FaSort, FaSun } from 'react-icons/fa'
 
 const FilterPosts = () => {
 	return (
-		<div className='bg-white mt-2 rounded border'>
+		<div className='bg-white mt-2 rounded border sm:text-sm'>
 			<div className='p-3 px-4 flex items-center gap-4'>
 				<button className='flex items-center gap-1 bg-gray-50 py-1 px-3 rounded-full hover:bg-gray-200'>
 					<FaFire className='text-secondary' />
