@@ -20,8 +20,8 @@ const PostDetails = () => {
 		<>
 			<Header />
 			<section className='bg-gray-400'>
-				<div className='w-10/12 bg-black m-auto'>
-					<Posts post={mainPost} />
+				<div className='w-10/12 bg-black m-auto lg:w-11/12 sm:w-full'>
+					<Posts post={mainPost} className='md:w-full' />
 				</div>
 			</section>
 		</>

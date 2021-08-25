@@ -15,6 +15,7 @@ const customStyles = {
 		top: '50%',
 		left: '50%',
 		padding: '0px',
+		width: 'clamp(500px, 100%, 50vw)',
 		// right: 'auto',
 		bottom: 'auto',
 		transform: 'translate(-50%, -50%)',
@@ -59,12 +60,12 @@ const Signup = ({
 			contentLabel='Example Modal'>
 			<div
 				ref={(_subtitle) => (subtitle = _subtitle)}
-				className='flex gap-6 relative'>
-				<div className='w-24 bg-gradient-to-b from-secondary  to-blue-700'></div>
+				className='flex gap-6 relative sm:gap-0 sm:justify-center'>
+				<div className='w-32 bg-gradient-to-b from-secondary  to-blue-700 sm:hidden'></div>
 
 				<button
 					onClick={closeModal}
-					className='text-gray-500 text-2xl absolute top-4 right-4 hover:text-gray-800'>
+					className='text-gray-500 text-2xl absolute top-4 right-4 hover:text-gray-800 sm:right-16'>
 					<FaTimes />
 				</button>
 
@@ -125,8 +126,8 @@ const Signup = ({
 					</div>
 				</div> */}
 
-				<div className='pr-10 py-6'>
-					<h2 className='font-bold'>Join us</h2>
+				<div className='pr-10 py-6 md:px-4 sm:pr-0 sm:text-center'>
+					<h2 className='font-bold sm:text-2xl'>Join us</h2>
 					<p className='text-xs pt-1'>
 						By continuing, you agree to our{' '}
 						<a href='#' className='text-secondary hover:underline'>
@@ -138,24 +139,24 @@ const Signup = ({
 						</a>
 					</p>
 
-					<form className='flex items-start flex-col'>
-						<div className='mt-8 w-3/4 flex flex-col'>
-							<button className='social-link'>
-								<FaGoogle className='text-lg' />
+					<form className='flex items-start flex-col md:gap-4 sm:items-center'>
+						<div className='mt-8 w-3/4 flex flex-col lg:mt-4 '>
+							<button className='social-link focus:ring'>
+								<FaGoogle className='text-lg lg:text-base' />
 								<span>Continue with Google</span>
 							</button>
-							<button className='social-link mt-2'>
-								<FaApple className='text-2xl' />
+							<button className='social-link mt-2 focus:ring'>
+								<FaApple className='text-2xl lg:text-base' />
 								<span>Continue with Apple</span>
 							</button>
 						</div>
 
-						<p className='uppercase font-bold pt-8 text-gray-400 tracking-widest'>
+						<p className='uppercase font-bold pt-8 lg:pt-6 text-gray-400 tracking-widest md:hidden'>
 							or
 						</p>
 
 						<div className='w-3/4'>
-							<div className='flex flex-col pt-6'>
+							<div className='flex flex-col pt-6 lg:pt-4'>
 								<div>
 									<div className='flex flex-col pt-3'>
 										<label
@@ -167,7 +168,7 @@ const Signup = ({
 											type='text'
 											name='Full Name'
 											id='name'
-											className='border rounded p-2 mt-1'
+											className='border rounded p-2 mt-1 sm:text-center'
 											value={name}
 											onChange={(e) =>
 												setName(e.target.value)
@@ -192,7 +193,7 @@ const Signup = ({
 											type='email'
 											name='email'
 											id='email'
-											className='border rounded p-2 mt-1'
+											className='border rounded p-2 mt-1 sm:text-center'
 											value={email}
 											onChange={(e) =>
 												setEmail(e.target.value)
@@ -213,7 +214,7 @@ const Signup = ({
 											type='text'
 											name='password'
 											id='password'
-											className='border rounded p-2 mt-1'
+											className='border rounded p-2 mt-1 sm:text-center'
 											value={password}
 											onChange={(e) =>
 												setPassword(e.target.value)
@@ -234,7 +235,7 @@ const Signup = ({
 											type='text'
 											name='confirm_password'
 											id='confirm_password'
-											className='border rounded p-2 mt-1'
+											className='border rounded p-2 mt-1 sm:text-center'
 											value={confirm_password}
 											onChange={(e) =>
 												setconfirm_password(
@@ -254,16 +255,34 @@ const Signup = ({
 									</div>
 								</div>
 
+								{/* if data is being fetched, you can add "animate-pulse" to the button class to indicate loading*/}
 								<button
 									onClick={handleSubmit}
 									type='submit'
-									className='bg-secondary text-white p-2 rounded-full mt-4 font-bold hover:opacity-90'>
+									className='bg-secondary text-white p-2 rounded-full mt-4 font-bold hover:opacity-90 flex items-center justify-center focus:ring'>
+									<svg
+										class='animate-spin -ml-1 mr-3 h-5 w-5 text-white'
+										xmlns='http://www.w3.org/2000/svg'
+										fill='none'
+										viewBox='0 0 24 24'>
+										<circle
+											class='opacity-25'
+											cx='12'
+											cy='12'
+											r='10'
+											stroke='currentColor'
+											stroke-width='4'></circle>
+										<path
+											class='opacity-75'
+											fill='currentColor'
+											d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z'></path>
+									</svg>
 									Continue
 								</button>
 							</div>
 						</div>
 
-						<p className='pt-4 text-xs'>
+						<p className='pt-4 text-xs md:text-center'>
 							Already with us?{' '}
 							<a
 								href='#'

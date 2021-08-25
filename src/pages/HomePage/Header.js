@@ -13,6 +13,7 @@ const Header = () => {
 	const [isUserLoggedIn, setIsUserLoggedIn] = useState(true)
 	const [userEmail, setUserEmail] = useState('')
 	const [userPassword, setUserPassword] = useState('')
+	const [show, setShow] = useState(false)
 
 	function openModal() {
 		setIsOpen(true)
@@ -85,7 +86,7 @@ const Header = () => {
 	return (
 		<header className='px-8 py-2 flex items-center justify-between shadow-md gap-8 sticky top-0 bg-white sm:px-2 sm:gap-2'>
 			<div className='flex flex-1 items-center'>
-				<h1 className='font-semibold text-xl uppercase sm:capitalize sm:text-lg xs:text-sm xs:text-red-300'>
+				<h1 className='font-semibold text-xl uppercase sm:capitalize sm:text-base'>
 					WordAround
 				</h1>
 				{renderAuthModal(logInModal)}
@@ -95,14 +96,14 @@ const Header = () => {
 					onSubmit={handleSubmit}>
 					<label
 						htmlFor='search'
-						className='absolute align-middle top-3'>
+						className='absolute align-middle top-2'>
 						<FaSearch className='w-8 text-gray-300' />
 					</label>
 					<input
 						type='text'
 						id='search'
 						placeholder='Search WordAround'
-						className='bg-gray-100 rounded py-2 px-10 text-sm font-semibold flex-1 focus:outline-none sm:text-xs'
+						className='bg-gray-100 rounded py-2 px-10 text-sm font-semibold flex-1 focus:outline-none sm:text-xs xs:px-4 xs:pl-6'
 					/>
 				</form>
 			</div>
@@ -110,15 +111,19 @@ const Header = () => {
 				{/* before user is logged in or after logging out */}
 				{!isUserLoggedIn ? (
 					<>
-						<div className='flex gap-4 text-sm md:absolute md:right-3 md:top-14 md:rounded md:flex-col md:bg-white md:p-4 md:shadow md:hidden'>
-							<div>
-								<button
-									onClick={openModal}
-									type='button'
-									className='btn text-secondary'>
-									Log in
-								</button>
-							</div>
+						<div
+							className={
+								show
+									? 'flex gap-4 text-sm md:absolute md:right-3 md:top-14 md:rounded md:flex-col md:bg-white md:p-4 md:shadow'
+									: 'md:hidden flex items-center gap-4'
+							}>
+							<button
+								onClick={openModal}
+								type='button'
+								className='btn text-secondary'>
+								Log in
+							</button>
+
 							<button
 								onClick={openSignUpModal}
 								type='button'
@@ -126,7 +131,9 @@ const Header = () => {
 								Sign up
 							</button>
 						</div>
-						<button className='flex items-center gap-1 border rounded px-1'>
+						<button
+							className='flex items-center gap-1 border rounded p-2 md:p-1 xs:border-0'
+							onClick={() => setShow(!show)}>
 							<FaUserAlt />
 							<FaCaretDown />
 						</button>

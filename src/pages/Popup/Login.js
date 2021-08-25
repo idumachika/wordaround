@@ -1,17 +1,16 @@
 import { useState } from 'react'
 import { FaApple, FaGoogle, FaTimes } from 'react-icons/fa'
 import Modal from 'react-modal'
-import { connect } from 'react-redux';
-import { userActions } from "../../redux/actions/user.actons";
-import { useDispatch, useSelector } from "react-redux";
-
-
+import { connect } from 'react-redux'
+import { userActions } from '../../redux/actions/user.actons'
+import { useDispatch, useSelector } from 'react-redux'
 
 const customStyles = {
 	content: {
 		top: '50%',
 		left: '50%',
 		padding: '0px',
+		width: 'clamp(500px, 100%, 50vw)',
 		// right: 'auto',
 		bottom: 'auto',
 		transform: 'translate(-50%, -50%)',
@@ -35,25 +34,20 @@ const Login = ({
 	// const [token, setToken] = useState('')
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
-	const dispatch = useDispatch();
-
-
+	const dispatch = useDispatch()
 
 	const handleSubmit = (e) => {
-		e.preventDefault();
+		e.preventDefault()
 		// this.setState({ submitted: true });
-		console.log("this is the email and password ", email, password)
+		console.log('this is the email and password ', email, password)
 		// const { dispatch } = this.props;
 		if (email && password) {
 			// this.setState({ submitted: true });
-			dispatch(userActions.login(email, password));
-
-		}
-		else {
+			dispatch(userActions.login(email, password))
+		} else {
 			// this.setState({ submitted: false });
 		}
 	}
-
 
 	return (
 		<Modal
@@ -64,17 +58,17 @@ const Login = ({
 			contentLabel='Example Modal'>
 			<div
 				ref={(_subtitle) => (subtitle = _subtitle)}
-				className='flex gap-6 relative'>
-				<div className='w-24 bg-gradient-to-b from-secondary  to-blue-700'></div>
+				className='flex gap-6 relative sm:justify-center'>
+				<div className='w-32 bg-gradient-to-b from-secondary  to-blue-700 sm:hidden'></div>
 
 				<button
 					onClick={closeModal}
-					className='text-gray-500 text-2xl absolute top-4 right-4 hover:text-gray-800'>
+					className='text-gray-500 text-2xl absolute top-4 right-4 hover:text-gray-800 sm:right-16'>
 					<FaTimes />
 				</button>
 
-				<div className='pr-10 py-6'>
-					<h2 className='font-bold'>Login</h2>
+				<div className='py-6 sm:px-4 sm:text-center'>
+					<h2 className='font-bold sm:text-2xl'>Login</h2>
 					<p className='text-xs pt-1'>
 						By continuing, you agree to our{' '}
 						<a href='#' className='text-secondary hover:underline'>
@@ -89,7 +83,7 @@ const Login = ({
 					<form
 						className='flex items-start flex-col'
 						onSubmit={logInUser}>
-						<div className='mt-12 w-3/4 flex flex-col'>
+						<div className='mt-12 w-3/4 flex flex-col sm:w-full sm:px-4'>
 							<button className='social-link'>
 								<FaGoogle className='text-lg' />
 								<span>Continue with Google</span>
@@ -100,11 +94,11 @@ const Login = ({
 							</button>
 						</div>
 
-						<p className='uppercase font-bold pt-8 text-gray-400 tracking-widest'>
+						<p className='uppercase font-bold pt-8 text-gray-400 tracking-widest sm:text-center sm:w-full sm:px-4'>
 							or
 						</p>
 
-						<div className='w-3/4'>
+						<div className='w-3/4 sm:w-full sm:px-4'>
 							<div className='flex flex-col pt-8'>
 								<div className='flex flex-col'>
 									<label
@@ -116,7 +110,7 @@ const Login = ({
 										type='text'
 										name='username'
 										id='username'
-										className='border rounded p-2 mt-1'
+										className='border rounded p-2 mt-1 sm:text-center'
 										value={email}
 										onChange={(e) =>
 											setEmail(e.target.value)
@@ -133,7 +127,7 @@ const Login = ({
 										type='password'
 										name='password'
 										id='password'
-										className='border rounded p-2 mt-1'
+										className='border rounded p-2 mt-1 sm:text-center'
 										value={password}
 										onChange={(e) =>
 											setPassword(e.target.value)
@@ -165,7 +159,7 @@ const Login = ({
 							</p>
 						</div>
 
-						<p className='pt-4 text-xs'>
+						<p className='pt-6 text-xs md:text-center sm:w-full'>
 							New to WordAround?{' '}
 							<a
 								href='#'
@@ -184,11 +178,10 @@ const Login = ({
 	)
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
 	// count: state.counter.count
-});
+})
 
-const mapDispatchToProps = { userActions };
+const mapDispatchToProps = { userActions }
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login)

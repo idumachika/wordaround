@@ -18,7 +18,7 @@ module.exports = {
 		screens: {
 			xs: { max: '380px' },
 			// => @media (max-width: 375px) { ... }
-			...defaultTheme.screens,
+			// ...defaultTheme.screens,
 			lg: { max: '1024px' },
 			// // => @media (max-width: 1023px) { ... }
 			md: { max: '768px' },

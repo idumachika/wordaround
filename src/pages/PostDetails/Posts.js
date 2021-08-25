@@ -28,7 +28,7 @@ const Posts = ({ post }) => {
 
 					<button className='flex items-center gap-2'>
 						<FaImage />
-						<p className='text-sm'>{post.post}</p>
+						<p className='text-sm md:hidden'>{post.post}</p>
 					</button>
 				</div>
 
@@ -39,9 +39,8 @@ const Posts = ({ post }) => {
 			</header>
 
 			<section className='bg-gray-200 flex gap-3 py-4 w-full px-6'>
-				<div className=' m-auto w-9/12'>
+				<div className=' m-auto w-9/12 md:w-11/12 sm:w-screen'>
 					<SocialPost {...post} />
-
 					<div className='flex flex-col'>
 						{typeof post.comments != 'undefined'
 							? post.comments.map((comment, index) => (

@@ -2,9 +2,13 @@ import UserCommentActionBtns from './UserCommentActionBtns'
 const UserComment = ({ name, img, comment }) => {
 	return (
 		<article className='flex items-start bg-white py-5 px-6'>
-			<img src={img} alt={`${name} img`} className=' w-8 rounded-full' />
+			<img
+				src={img}
+				alt={`${name} img`}
+				className=' w-8 rounded-full sm:hidden'
+			/>
 
-			<div className='text-gray-600 border-l-2 pl-3'>
+			<div className='text-gray-600 pl-3'>
 				<div className='flex flex-col gap-2'>
 					<div className='flex items-center text-sm'>
 						<p className='font-semibold'>{name}</p>

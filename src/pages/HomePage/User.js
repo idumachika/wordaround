@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { FaCaretDown, FaSignOutAlt, FaUserCircle } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 
 const User = ({ logOutUser }) => {
 	const [show, setShow] = useState(false)
@@ -67,11 +68,12 @@ const User = ({ logOutUser }) => {
 										Create Post
 									</a>
 								</div>
-								<a
+								<Link
+									to='/live'
 									href='#'
 									className='py-2 px-12 hover:bg-gray-200 hidden md:block'>
 									Live
-								</a>
+								</Link>
 							</div>
 						</div>
 					</div>

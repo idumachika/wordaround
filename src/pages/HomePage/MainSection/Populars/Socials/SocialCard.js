@@ -10,7 +10,7 @@ const SocialPost = ({
 }) => {
 	return (
 		<>
-			<article className='mt-3 p-3 pl-14 rounded bg-white border sm:px-2'>
+			<article className='mt-3 p-3 pl-14 rounded bg-white border sm:px-2 '>
 				<div>
 					<header className='flex items-center justify-between'>
 						<div className='flex items-center'>
