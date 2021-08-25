@@ -7,7 +7,7 @@ const FilterPosts = () => {
 			<div className='p-3 px-4 flex items-center gap-4'>
 				<button
 					type='button'
-					className='flex items-center gap-1 bg-gray-50 py-1 px-3 rounded-full hover:bg-gray-200 active:scale-90'>
+					className='flex items-center gap-1 bg-gray-50 py-1 px-3 rounded-full hover:bg-gray-200 active:scale-90 focus:ring-0'>
 					<FaFire className='text-secondary' />
 					<span className='font-bold text-secondary inline-block'>
 						Hot
@@ -16,7 +16,7 @@ const FilterPosts = () => {
 
 				<button
 					type='button'
-					className='flex items-center gap-1 bg-gray-50 py-1 px-3 rounded-full hover:bg-gray-200'>
+					className='flex items-center gap-1 bg-gray-50 py-1 px-3 rounded-full hover:bg-gray-200 focus:ring-0'>
 					<FaSun className='text-secondary' />
 					<span className='font-bold text-secondary inline-block'>
 						New
@@ -25,7 +25,7 @@ const FilterPosts = () => {
 
 				<button
 					type='button'
-					className='flex items-center gap-1 bg-gray-50 py-1 px-3 rounded-full hover:bg-gray-200'>
+					className='flex items-center gap-1 bg-gray-50 py-1 px-3 rounded-full hover:bg-gray-200 focus:ring-0'>
 					<FaSort className='text-secondary' />
 					<span className='font-bold text-secondary inline-block'>
 						Top
