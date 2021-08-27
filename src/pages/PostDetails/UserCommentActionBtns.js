@@ -3,11 +3,11 @@ const UserCommentActionBtns = () => {
 	return (
 		<>
 			<div className='flex items-center gap-1'>
-				<button className='hover:text-green-600 hover:bg-gray-200 p-1'>
+				<button className='hover:text-green-700 hover:bg-gray-200 p-1'>
 					<FaArrowUp />
 				</button>
 				<span className='text-sm font-semibold'>433</span>
-				<button className='hover:text-red-600 hover:bg-gray-200 p-1'>
+				<button className='hover:text-red-700 hover:bg-gray-200 p-1'>
 					<FaArrowDown />
 				</button>
 			</div>

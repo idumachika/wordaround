@@ -9,7 +9,7 @@ import {
 
 const ActionBtns = () => {
 	return (
-		<footer className='flex items-center pt-2'>
+		<footer className='flex items-center'>
 			<div className='flex items-center'>
 				<button className='social-action-box'>
 					<FaRegCommentAlt />
@@ -21,18 +21,21 @@ const ActionBtns = () => {
 					<FaRegShareSquare />
 					<span className='text-xs font-extrabold'>Share</span>
 				</button>
+
 				{/* <button className='social-action-box'>
-					<FaRegBookmark />
-					<span className='text-xs font-extrabold'>Save</span>
-				</button>
-				<button className='social-action-box'>
-					<FaRegEyeSlash />
-					<span className='text-xs font-extrabold'>Hide</span>
-				</button>
-				<button className='social-action-box'>
-					<FaRegFlag />
-					<span className='text-xs font-extrabold'>Report</span>
-				</button> */}
+							<FaRegBookmark />
+							<span className='text-xs font-extrabold'>Save</span>
+						</button>
+						<button className='social-action-box'>
+							<FaRegEyeSlash />
+							<span className='text-xs font-extrabold'>Hide</span>
+						</button>
+						<button className='social-action-box'>
+							<FaRegFlag />
+							<span className='text-xs font-extrabold'>
+								Report
+							</span>
+						</button> */}
 			</div>
 
 			<div>
